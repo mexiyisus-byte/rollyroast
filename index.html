@@ -27,31 +27,6 @@
       font-family: 'DM Sans', sans-serif;
       background: var(--cream);
       color: var(--charcoal);
-      cursor: none;
-    }
-
-    /* Custom cursor */
-    .cursor {
-      width: 10px; height: 10px;
-      background: var(--terracotta);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.15s ease;
-      mix-blend-mode: multiply;
-    }
-    .cursor-follower {
-      width: 32px; height: 32px;
-      border: 1px solid var(--terracotta);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9998;
-      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      opacity: 0.5;
     }
 
     /* NAV */
@@ -193,7 +168,7 @@
       text-transform: uppercase;
       text-decoration: none;
       border: none;
-      cursor: none;
+
       transition: background 0.3s, transform 0.2s;
     }
     .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-2px); }
@@ -207,7 +182,7 @@
       text-transform: uppercase;
       text-decoration: none;
       border: 1px solid rgba(255,255,255,0.5);
-      cursor: none;
+
       transition: border-color 0.3s, transform 0.2s;
     }
     .btn-outline:hover { border-color: white; transform: translateY(-2px); }
@@ -377,7 +352,7 @@
       background: transparent;
       color: rgba(255,255,255,0.5);
       border: none;
-      cursor: none;
+
       transition: all 0.3s;
     }
     .menu-tab.active {
@@ -562,7 +537,7 @@
       font-size: 16px;
       outline: none;
       transition: border-color 0.3s;
-      cursor: none;
+
       appearance: none;
     }
     .form-input:focus, .form-select:focus {
@@ -585,7 +560,7 @@
       font-size: 13px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      cursor: none;
+
       margin-top: 8px;
       transition: background 0.3s, transform 0.2s;
     }
@@ -701,7 +676,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       transition: background 0.3s, transform 0.2s;
-      cursor: none;
+
     }
     .whatsapp-btn:hover { background: #1aab52; transform: translateY(-2px); }
 
@@ -751,7 +726,7 @@
       color: rgba(255,255,255,0.5);
       text-decoration: none;
       transition: color 0.3s;
-      cursor: none;
+
     }
     .footer-links a:hover { color: white; }
     .footer-bottom {
@@ -805,7 +780,7 @@
       display: none;
       flex-direction: column;
       gap: 5px;
-      cursor: none;
+
       padding: 4px;
     }
     .hamburger span {
@@ -834,8 +809,6 @@
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-follower" id="cursorFollower"></div>
 
   <!-- NAV -->
   <nav id="navbar">
@@ -1236,20 +1209,6 @@
 
   <script>
     // Cursor
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursorFollower');
-    let mx = 0, my = 0, fx = 0, fy = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
-    });
-    function animateFollower() {
-      fx += (mx - fx - 16) * 0.12;
-      fy += (my - fy - 16) * 0.12;
-      follower.style.transform = `translate(${fx}px, ${fy}px)`;
-      requestAnimationFrame(animateFollower);
-    }
-    animateFollower();
 
     // Nav scroll
     const navbar = document.getElementById('navbar');
