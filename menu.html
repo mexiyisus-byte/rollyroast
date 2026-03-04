@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú — Rolly Roast & Yoyo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'RobuckRounded';
+      src: url('fonts/RobuckRounded.otf') format('opentype');
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --terracotta: #C0432A;
+      --terracotta-dark: #8B2D1A;
+      --terracotta-light: #D4614A;
+      --cream: #FAF7F2;
+      --charcoal: #1A1410;
+      --warm-gray: #7A6E66;
+      --sage: #5C8A6B;
+    }
+    html, body {
+      min-height: 100vh;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 18px 40px;
+      background: rgba(26,20,16,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .back-link {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.25s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .back-link:hover { color: white; }
+    .header-logo {
+      font-family: 'RobuckRounded', 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta-light);
+      text-decoration: none;
+      text-align: center;
+    }
+    .header-nav {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      justify-content: flex-end;
+    }
+    .header-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .header-nav a:hover, .header-nav a.active { color: white; }
+
+    /* MAIN */
+    main {
+      padding: 100px 48px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+      color: var(--cream);
+    }
+    .page-title em { color: var(--terracotta-light); font-style: normal; }
+
+    /* TABS */
+    .menu-tabs {
+      display: inline-flex;
+      gap: 6px;
+      margin-bottom: 40px;
+      background: rgba(255,255,255,0.06);
+      padding: 6px;
+      border-radius: 50px;
+    }
+    .menu-tab {
+      padding: 10px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: transparent;
+      color: rgba(255,255,255,0.4);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .menu-tab.active { background: var(--terracotta); color: white; }
+    .menu-tab:hover:not(.active) { color: white; }
+
+    /* MENU SECTIONS */
+    .menu-section { display: none; }
+    .menu-section.active { display: block; }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .menu-item {
+      padding: 28px;
+      border-radius: 16px;
+      border: 1.5px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+    .menu-item:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: var(--terracotta);
+      transform: translateY(-3px);
+    }
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .menu-item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .menu-item-price {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--terracotta-light);
+      background: rgba(192,67,42,0.15);
+      padding: 3px 10px;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+    .menu-item-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="back-link">← Inicio</a>
+    <a href="index.html" class="header-logo">Rolly Roast & Yoyo</a>
+    <ul class="header-nav">
+      <li><a href="menu.html" class="active">Menú</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <h1 class="page-title">Nuestro <em>Menú</em></h1>
+
+    <div class="menu-tabs">
+      <button class="menu-tab active" onclick="switchTab('cafes')">Cafés</button>
+      <button class="menu-tab" onclick="switchTab('rolls')">Rolls</button>
+      <button class="menu-tab" onclick="switchTab('philly')">Philly</button>
+    </div>
+
+    <!-- CAFÉS -->
+    <div class="menu-section active" id="tab-cafes">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Espresso</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Doble shot, cuerpo intenso, finish prolongado. La base de todo.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Latte</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Espresso con leche vaporizada suave. Clásico irresistible.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Cappuccino</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Espresso, leche y espuma perfectamente equilibrados.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Americano</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Espresso con agua caliente. Limpio, directo, honesto.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Cold Brew</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Infusión en frío 18 horas. Suave, concentrado, sin acidez.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Cortado</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Espresso cortado con leche caliente. Para el paladar preciso.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROLLS -->
+    <div class="menu-section" id="tab-rolls">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Classic Cinnamon</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Roll de canela clásico, glaseado de vainilla, recién horneado.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Nutella Dream</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Roll relleno de Nutella con avellanas tostadas y glaseado de chocolate.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Caramel Apple</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Manzana caramelizada, canela, cobertura de caramelo salado.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Cream Cheese</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Relleno cremoso de queso, toque de limón, glaseado suave.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Oreo Crunch</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Roll de vainilla con crema de Oreo y cobertura crujiente.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Seasonal Special</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Sabor especial de temporada. Pregunta por el del día.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHILLY -->
+    <div class="menu-section" id="tab-philly">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">The Classic Philly</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Ribeye rebanado fino, Cheez Whiz, cebolla caramelizada, pan hoagie tostado.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Mushroom Philly</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Ribeye con hongos salteados, provolone derretido, pimiento verde.</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-name">Spicy Philly</span>
+            <span class="menu-item-price">$XX</span>
+          </div>
+          <div class="menu-item-desc">Versión picante con jalapeños, pepper jack cheese y aioli chipotle.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function switchTab(tab) {
+      document.querySelectorAll('.menu-tab').forEach((t, i) => {
+        t.classList.toggle('active', ['cafes','rolls','philly'][i] === tab);
+      });
+      document.querySelectorAll('.menu-section').forEach(s => {
+        s.classList.toggle('active', s.id === 'tab-' + tab);
+      });
+    }
+  </script>
+</body>
+</html>
