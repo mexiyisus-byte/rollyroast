@@ -276,37 +276,13 @@
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
-    /* ICONS DECO */
-    .hero-icons-deco {
+    /* DECO ICONS */
+    .deco-icon {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 130px;
-      background: url('imagenes/png.png') left bottom / auto 260px no-repeat;
-      mix-blend-mode: multiply;
-      opacity: 0.55;
       pointer-events: none;
-    }
-    .icons-band {
-      background: var(--cream);
-      padding: 40px 0;
-      overflow: hidden;
-    }
-    .icons-band-track {
-      display: flex;
-      animation: iconScroll 30s linear infinite;
-      width: max-content;
-    }
-    .icons-band-img {
-      height: 110px;
-      width: auto;
       mix-blend-mode: multiply;
-      flex-shrink: 0;
-    }
-    @keyframes iconScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+      z-index: 1;
+      opacity: 0.9;
     }
 
     /* ABOUT */
@@ -960,7 +936,9 @@
         <a href="#menu" class="btn-primary">Ver Menú</a>
         <a href="#reservaciones" class="btn-outline">Reservar Mesa</a>
       </div>
-      <div class="hero-icons-deco"></div>
+      <!-- Deco icons hero -->
+      <img class="deco-icon" src="imagenes/icons/icon_arch_green.png" style="top:-40px; right:-50px; height:180px; transform:rotate(10deg);" alt="">
+      <img class="deco-icon" src="imagenes/icons/icon_flower_orange.png" style="bottom:60px; left:32px; height:55px; transform:rotate(-15deg);" alt="">
     </div>
     <div class="hero-img-panel">
       <div class="hero-bg" id="heroBg"></div>
@@ -993,16 +971,11 @@
     </div>
   </div>
 
-  <!-- ICONS BAND -->
-  <div class="icons-band">
-    <div class="icons-band-track">
-      <img src="imagenes/png.png" class="icons-band-img" alt="Rolly Roast Icons">
-      <img src="imagenes/png.png" class="icons-band-img" alt="Rolly Roast Icons">
-    </div>
-  </div>
-
   <!-- ABOUT -->
-  <section id="about">
+  <section id="about" style="position:relative; overflow:hidden;">
+    <!-- Deco icons about -->
+    <img class="deco-icon" src="imagenes/icons/icon_leaf_blue.png"    style="bottom:-40px; right:-30px; height:260px; opacity:0.25;" alt="">
+    <img class="deco-icon" src="imagenes/icons/icon_leaf_purple.png"  style="top:40px; left:-20px; height:140px; transform:rotate(-20deg); opacity:0.45;" alt="">
     <div class="about-images reveal">
       <div class="about-img-main"></div>
       <div class="about-img-accent"></div>
@@ -1208,13 +1181,16 @@
   </section>
 
   <!-- QUOTE -->
-  <div class="quote-section reveal">
+  <div class="quote-section reveal" style="position:relative; overflow:hidden;">
+    <img class="deco-icon" src="imagenes/icons/icon_grass_blue.png"   style="bottom:-10px; left:-20px; height:90px; opacity:0.3; mix-blend-mode:screen;" alt="">
+    <img class="deco-icon" src="imagenes/icons/icon_arch_gold.png"    style="top:-30px; right:-20px; height:150px; opacity:0.35; mix-blend-mode:screen;" alt="">
     <p class="quote-text">"El mejor momento del día empieza con el olor correcto."</p>
     <p class="quote-attr">— Rolly Roast, Ciudad de México</p>
   </div>
 
   <!-- RESERVACIONES -->
-  <section style="padding: 100px 0; background: var(--cream);">
+  <section style="padding: 100px 0; background: var(--cream); position:relative; overflow:hidden;">
+    <img class="deco-icon" src="imagenes/icons/icon_branch_green.png" style="top:40px; right:-30px; height:160px; transform:rotate(10deg); opacity:0.5;" alt="">
     <div id="reservaciones" style="max-width:1200px; margin:0 auto; padding: 0 48px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
       <div class="reveal">
         <p class="section-label">Agenda tu visita</p>
