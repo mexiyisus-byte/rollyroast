@@ -276,6 +276,38 @@
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
+    /* ICONS DECO */
+    .hero-icons-deco {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 130px;
+      background: url('imagenes/png.png') left bottom / auto 260px no-repeat;
+      mix-blend-mode: multiply;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .icons-band {
+      background: var(--cream);
+      padding: 40px 0;
+      overflow: hidden;
+    }
+    .icons-band-track {
+      display: flex;
+      animation: iconScroll 30s linear infinite;
+      width: max-content;
+    }
+    .icons-band-img {
+      height: 110px;
+      width: auto;
+      mix-blend-mode: multiply;
+      flex-shrink: 0;
+    }
+    @keyframes iconScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
 
     /* ABOUT */
     #about {
@@ -928,6 +960,7 @@
         <a href="#menu" class="btn-primary">Ver Menú</a>
         <a href="#reservaciones" class="btn-outline">Reservar Mesa</a>
       </div>
+      <div class="hero-icons-deco"></div>
     </div>
     <div class="hero-img-panel">
       <div class="hero-bg" id="heroBg"></div>
@@ -957,6 +990,14 @@
       <span class="marquee-item">Ciudad de México</span><span class="marquee-dot">✦</span>
       <span class="marquee-item">Rolly Roast & Yoyo</span><span class="marquee-dot">✦</span>
       <span class="marquee-item">Horneado Diario</span><span class="marquee-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ICONS BAND -->
+  <div class="icons-band">
+    <div class="icons-band-track">
+      <img src="imagenes/png.png" class="icons-band-img" alt="Rolly Roast Icons">
+      <img src="imagenes/png.png" class="icons-band-img" alt="Rolly Roast Icons">
     </div>
   </div>
 
