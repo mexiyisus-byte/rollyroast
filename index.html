@@ -24,62 +24,72 @@
       height: 100vh;
       overflow: hidden;
       font-family: 'DM Sans', sans-serif;
-      position: relative;
-    }
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      height: 100vh;
-      position: relative;
     }
 
-    /* PANELS */
-    .panel {
+    /* SLIDESHOW */
+    .slideshow {
       position: relative;
-      overflow: hidden;
+      width: 100%;
+      height: 100vh;
     }
-    .panel-bg {
+    .slide {
       position: absolute;
       inset: 0;
       background-size: cover;
       background-position: center;
-      transform: scale(1.04);
-      transition: transform 8s ease-out;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
     }
-    .panel-bg.loaded { transform: scale(1); }
-    .panel-overlay {
+    .slide.active { opacity: 1; }
+    .slide::after {
+      content: '';
       position: absolute;
       inset: 0;
-    }
-
-    /* LEFT */
-    .panel-left .panel-bg {
-      background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=80');
-    }
-    .panel-left .panel-overlay {
       background: linear-gradient(
         to bottom,
-        rgba(26,20,16,0.52) 0%,
-        rgba(26,20,16,0.08) 45%,
-        rgba(26,20,16,0.62) 100%
+        rgba(26,20,16,0.45) 0%,
+        rgba(26,20,16,0.1) 45%,
+        rgba(26,20,16,0.55) 100%
       );
     }
+
+    /* BRAND */
+    .brand-name {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      font-family: 'RobuckRounded', 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 64px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--terracotta);
+      text-align: center;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    /* ADDRESS */
     .address {
       position: absolute;
       top: 36px;
       left: 40px;
-      z-index: 2;
+      z-index: 10;
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.75);
     }
+
+    /* NAV */
     .side-nav {
       position: absolute;
       bottom: 52px;
       left: 40px;
-      z-index: 2;
+      z-index: 10;
       display: flex;
       flex-direction: column;
       gap: 2px;
@@ -100,36 +110,12 @@
       transform: translateX(10px);
     }
 
-    /* BRAND OVERLAY */
-    .brand-name {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      font-family: 'RobuckRounded', 'Playfair Display', serif;
-      font-size: clamp(28px, 3vw, 52px);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--terracotta);
-      text-align: center;
-      white-space: nowrap;
-      pointer-events: none;
-    }
-
-    /* RIGHT */
-    .panel-right .panel-bg {
-      background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1400&q=80');
-    }
-    .panel-right .panel-overlay {
-      background: rgba(26,20,16,0.2);
-    }
+    /* EST TAG */
     .est-tag {
       position: absolute;
       bottom: 40px;
       right: 36px;
-      z-index: 2;
+      z-index: 10;
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.2em;
@@ -137,37 +123,68 @@
       color: rgba(255,255,255,0.55);
       writing-mode: vertical-rl;
     }
+
+    /* DOTS */
+    .dots {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      transition: background 0.4s;
+    }
+    .dot.active { background: var(--terracotta); }
   </style>
 </head>
 <body>
-  <h1 class="brand-name">Rolly Roast</h1>
-  <div class="layout">
+  <div class="slideshow">
+    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1800&q=80')"></div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1800&q=80')"></div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=1800&q=80')"></div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1800&q=80')"></div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=1800&q=80')"></div>
 
-    <!-- LEFT -->
-    <div class="panel panel-left">
-      <div class="panel-bg" id="bgLeft"></div>
-      <div class="panel-overlay"></div>
-      <span class="address">Ciudad de México &nbsp;·&nbsp; [Colonia, CP]</span>
-      <nav class="side-nav">
-        <a href="menu.html">Menú</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
+    <span class="address">Ciudad de México &nbsp;·&nbsp; [Colonia, CP]</span>
+
+    <h1 class="brand-name">Rolly Roast</h1>
+
+    <nav class="side-nav">
+      <a href="menu.html">Menú</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <span class="est-tag">Est. 2025</span>
+
+    <div class="dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
     </div>
-
-    <!-- RIGHT -->
-    <div class="panel panel-right">
-      <div class="panel-bg" id="bgRight"></div>
-      <div class="panel-overlay"></div>
-      <span class="est-tag">Est. 2025</span>
-    </div>
-
   </div>
+
   <script>
-    setTimeout(() => {
-      document.getElementById('bgLeft').classList.add('loaded');
-      document.getElementById('bgRight').classList.add('loaded');
-    }, 100);
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }, 4000);
   </script>
 </body>
 </html>
