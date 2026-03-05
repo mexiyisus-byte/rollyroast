@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rolly Roast & Yoyo</title>
+  <title>Rolly Roast</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,11 +24,13 @@
       height: 100vh;
       overflow: hidden;
       font-family: 'DM Sans', sans-serif;
+      position: relative;
     }
     .layout {
       display: grid;
-      grid-template-columns: 44% 12% 44%;
+      grid-template-columns: 1fr 1fr;
       height: 100vh;
+      position: relative;
     }
 
     /* PANELS */
@@ -98,25 +100,22 @@
       transform: translateX(10px);
     }
 
-    /* CENTER */
-    .center-strip {
-      background: var(--cream);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-    }
+    /* BRAND OVERLAY */
     .brand-name {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
       font-family: 'RobuckRounded', 'Playfair Display', serif;
-      font-size: 14px;
+      font-size: clamp(28px, 3vw, 52px);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--terracotta);
       text-align: center;
-      writing-mode: vertical-rl;
-      line-height: 1.8;
+      white-space: nowrap;
+      pointer-events: none;
     }
 
     /* RIGHT */
@@ -141,6 +140,7 @@
   </style>
 </head>
 <body>
+  <h1 class="brand-name">Rolly Roast</h1>
   <div class="layout">
 
     <!-- LEFT -->
@@ -153,11 +153,6 @@
         <a href="nosotros.html">Nosotros</a>
         <a href="contacto.html">Contacto</a>
       </nav>
-    </div>
-
-    <!-- CENTER -->
-    <div class="center-strip">
-      <h1 class="brand-name">Rolly Roast &amp; Yoyo</h1>
     </div>
 
     <!-- RIGHT -->
