@@ -86,8 +86,6 @@
     main {
       padding-top: 80px;
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
     }
 
     /* LEFT — INFO */
@@ -210,75 +208,9 @@
     }
     .whatsapp-btn:hover { background: #1aab52; transform: translateY(-2px); }
 
-    /* RIGHT — FORM */
-    .form-panel {
-      padding: 64px 56px;
-      background: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .form-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--charcoal);
-    }
-    .form-subtitle {
-      font-size: 14px;
-      color: var(--warm-gray);
-      margin-bottom: 32px;
-    }
-    .form-group { margin-bottom: 18px; }
-    .form-label {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--warm-gray);
-      margin-bottom: 8px;
-    }
-    .form-input, .form-select {
-      width: 100%;
-      padding: 13px 16px;
-      background: var(--cream);
-      border: 1.5px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      color: var(--charcoal);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.3s;
-      appearance: none;
-    }
-    .form-input:focus, .form-select:focus { border-color: var(--turquoise); }
-    .form-input::placeholder { color: var(--warm-gray); opacity: 0.5; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-submit {
-      width: 100%;
-      padding: 15px;
-      background: var(--terracotta);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      cursor: pointer;
-      margin-top: 8px;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .form-submit:hover { background: var(--terracotta-dark); transform: translateY(-2px); }
-
     @media (max-width: 900px) {
-      main { grid-template-columns: 1fr; }
-      .info-panel, .form-panel { padding: 48px 24px; }
+      .info-panel { padding: 48px 24px; }
       .hours-grid { grid-template-columns: 1fr 1fr; }
-      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -351,51 +283,6 @@
       <a href="https://wa.me/5255XXXXXXXX" class="whatsapp-btn">💬 Escríbenos por WhatsApp</a>
     </div>
 
-    <!-- FORM -->
-    <div class="form-panel">
-      <div class="form-title">Hacer Reservación</div>
-      <div class="form-subtitle">Confirmación por WhatsApp en menos de 1 hora.</div>
-
-      <div class="form-group">
-        <label class="form-label">Nombre completo</label>
-        <input type="text" class="form-input" placeholder="Tu nombre">
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Fecha</label>
-          <input type="date" class="form-input">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Hora</label>
-          <select class="form-select">
-            <option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option>
-            <option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option>
-            <option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option>
-            <option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option>
-            <option>7:00 PM</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Personas</label>
-        <select class="form-select">
-          <option>1 persona</option><option>2 personas</option><option>3 personas</option>
-          <option>4 personas</option><option>5 personas</option><option>6 personas</option>
-          <option>7 personas</option><option>8 personas</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">WhatsApp</label>
-        <input type="tel" class="form-input" placeholder="+52 55 XXXX XXXX">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Notas especiales (opcional)</label>
-        <input type="text" class="form-input" placeholder="Alergias, ocasión especial...">
-      </div>
-      <button class="form-submit" onclick="this.textContent='✓ Reservación enviada'; this.style.background='#25D366'; setTimeout(()=>{this.textContent='Solicitar Reservación →';this.style.background='';},3000)">
-        Solicitar Reservación →
-      </button>
-    </div>
   </main>
 
 </body>
