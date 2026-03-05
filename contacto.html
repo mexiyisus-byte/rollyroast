@@ -30,7 +30,7 @@
       min-height: 100vh;
       font-family: 'DM Sans', sans-serif;
       background: var(--cream);
-      color: var(--charcoal);
+      color: var(--terracotta);
     }
 
     /* HEADER */
@@ -42,10 +42,9 @@
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       padding: 18px 40px;
-      background: rgba(250,247,242,0.97);
+      background: rgba(248,246,242,0.97);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      box-shadow: 0 2px 20px rgba(26,20,16,0.05);
     }
     .back-link {
       font-size: 13px;
@@ -84,133 +83,44 @@
 
     /* MAIN */
     main {
-      padding-top: 80px;
       min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 80px;
     }
 
-    /* LEFT — INFO */
-    .info-panel {
-      padding: 64px 56px;
-      background: var(--charcoal);
-      color: var(--cream);
+    /* CONTACT LIST */
+    .contact-list {
+      text-align: center;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      gap: 56px;
     }
-    .section-label {
+    .contact-entry {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .contact-entry-label {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--turquoise);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      color: var(--warm-gray);
     }
-    .section-label::before {
-      content: '';
-      width: 22px;
-      height: 2px;
-      background: var(--turquoise);
-      border-radius: 2px;
-    }
-    .page-title {
+    .contact-entry-value {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 4vw, 58px);
+      font-size: clamp(22px, 3vw, 38px);
       font-weight: 700;
-      font-style: italic;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 40px;
-      color: var(--cream);
-    }
-    .page-title em { color: var(--terracotta-light); font-style: normal; }
-
-    .contact-item {
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .contact-icon {
-      width: 40px; height: 40px;
-      background: rgba(92,138,107,0.2);
-      color: var(--turquoise);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-      border-radius: 12px;
-    }
-    .contact-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 4px;
-    }
-    .contact-value {
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--cream);
-      line-height: 1.5;
-    }
-    .hours-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 32px;
-    }
-    .hour-block {
-      padding: 18px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.07);
-    }
-    .hour-day {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--turquoise);
-      margin-bottom: 6px;
-    }
-    .hour-time {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--cream);
-    }
-    .hour-closed {
-      font-size: 14px;
-      color: rgba(255,255,255,0.4);
-      font-style: italic;
-    }
-    .whatsapp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 32px;
-      background: #25D366;
-      color: white;
-      padding: 14px 28px;
+      color: var(--terracotta);
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border-radius: 50px;
-      transition: background 0.3s, transform 0.2s;
+      transition: color 0.25s;
     }
-    .whatsapp-btn:hover { background: #1aab52; transform: translateY(-2px); }
+    a.contact-entry-value:hover { color: var(--terracotta-dark); }
 
-    @media (max-width: 900px) {
-      .info-panel { padding: 48px 24px; }
-      .hours-grid { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 600px) {
+      .contact-list { gap: 40px; padding: 0 24px; }
     }
   </style>
 </head>
@@ -227,62 +137,24 @@
   </header>
 
   <main>
-    <!-- INFO -->
-    <div class="info-panel">
-      <p class="section-label">Encuéntranos</p>
-      <h1 class="page-title">Visítanos <em>pronto</em></h1>
+    <div class="contact-list">
 
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div>
-          <div class="contact-label">Dirección</div>
-          <div class="contact-value">[Calle, Número, Colonia]<br>Ciudad de México</div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📞</div>
-        <div>
-          <div class="contact-label">Teléfono</div>
-          <div class="contact-value">+52 55 XXXX XXXX</div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">✉️</div>
-        <div>
-          <div class="contact-label">Correo</div>
-          <div class="contact-value">hello@rollyroast.com</div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📱</div>
-        <div>
-          <div class="contact-label">Instagram</div>
-          <div class="contact-value">@rollyroast</div>
-        </div>
+      <div class="contact-entry">
+        <span class="contact-entry-label">Teléfono</span>
+        <a href="tel:+5255XXXXXXXX" class="contact-entry-value">+52 55 XXXX XXXX</a>
       </div>
 
-      <div class="hours-grid">
-        <div class="hour-block">
-          <div class="hour-day">Lun — Vie</div>
-          <div class="hour-time">7:00 — 20:00</div>
-        </div>
-        <div class="hour-block">
-          <div class="hour-day">Sábado</div>
-          <div class="hour-time">8:00 — 21:00</div>
-        </div>
-        <div class="hour-block">
-          <div class="hour-day">Domingo</div>
-          <div class="hour-time">9:00 — 18:00</div>
-        </div>
-        <div class="hour-block">
-          <div class="hour-day">Festivos</div>
-          <div class="hour-closed">Horario especial</div>
-        </div>
+      <div class="contact-entry">
+        <span class="contact-entry-label">Únete a nuestro equipo</span>
+        <a href="mailto:jobs@rollyroast.com" class="contact-entry-value">jobs@rollyroast.com</a>
       </div>
 
-      <a href="https://wa.me/5255XXXXXXXX" class="whatsapp-btn">💬 Escríbenos por WhatsApp</a>
+      <div class="contact-entry">
+        <span class="contact-entry-label">Prensa y RP</span>
+        <a href="mailto:hello@rollyroast.com" class="contact-entry-value">hello@rollyroast.com</a>
+      </div>
+
     </div>
-
   </main>
 
 </body>
