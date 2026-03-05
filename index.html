@@ -144,20 +144,20 @@
     }
     .lang-btn {
       font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: rgba(255,255,255,0.5);
       background: transparent;
       border: none;
-      padding: 6px 12px;
-      border-radius: 50px;
+      padding: 6px 8px;
       cursor: pointer;
-      transition: all 0.25s;
+      transition: color 0.25s;
     }
     .lang-btn.active {
-      background: var(--terracotta);
-      color: white;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
     }
 
     /* ARROWS */
@@ -166,23 +166,17 @@
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: transparent;
+      border: none;
       cursor: pointer;
-      transition: background 0.25s;
-      color: white;
-      font-size: 20px;
+      color: rgba(255,255,255,0.6);
+      font-size: 28px;
+      transition: color 0.25s;
+      padding: 12px;
     }
-    .arrow:hover { background: rgba(255,255,255,0.3); }
-    .arrow-left { left: 24px; }
-    .arrow-right { right: 24px; }
+    .arrow:hover { color: white; }
+    .arrow-left { left: 16px; }
+    .arrow-right { right: 16px; }
   </style>
 </head>
 <body>
