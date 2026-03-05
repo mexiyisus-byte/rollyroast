@@ -112,7 +112,7 @@
       display: inline-block;
     }
     .side-nav a:hover {
-      color: rgba(255,255,255,0.5);
+      color: rgba(123,173,168,0.85);
       transform: translateX(10px);
     }
 
@@ -138,9 +138,6 @@
       z-index: 10;
       display: flex;
       align-items: center;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 50px;
       padding: 4px;
       gap: 2px;
@@ -163,24 +160,29 @@
       color: white;
     }
 
-    /* DOTS */
-    .dots {
+    /* ARROWS */
+    .arrow {
       position: absolute;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 10;
-      display: flex;
-      gap: 8px;
-    }
-    .dot {
-      width: 6px;
-      height: 6px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
       border-radius: 50%;
-      background: rgba(255,255,255,0.35);
-      transition: background 0.4s;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.25s;
+      color: white;
+      font-size: 20px;
     }
-    .dot.active { background: var(--terracotta); }
+    .arrow:hover { background: rgba(255,255,255,0.3); }
+    .arrow-left { left: 24px; }
+    .arrow-right { right: 24px; }
   </style>
 </head>
 <body>
@@ -206,29 +208,30 @@
       <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
     </nav>
 
-    <span class="est-tag">Est. 2025</span>
+    <span class="est-tag">Est. 2026</span>
 
-    <div class="dots">
-      <div class="dot active"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-    </div>
+    <button class="arrow arrow-left" onclick="moveSlide(-1)">&#8592;</button>
+    <button class="arrow arrow-right" onclick="moveSlide(1)">&#8594;</button>
   </div>
 
   <script>
     const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
     let current = 0;
+    let timer = null;
 
-    setInterval(() => {
+    function goTo(index) {
       slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = (current + 1) % slides.length;
+      current = (index + slides.length) % slides.length;
       slides[current].classList.add('active');
-      dots[current].classList.add('active');
-    }, 4000);
+    }
+
+    function moveSlide(dir) {
+      goTo(current + dir);
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 4000);
+    }
+
+    timer = setInterval(() => goTo(current + 1), 4000);
 
     function setLang(lang) {
       document.querySelectorAll('[data-es]').forEach(el => {
