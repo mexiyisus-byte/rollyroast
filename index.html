@@ -124,6 +124,39 @@
       writing-mode: vertical-rl;
     }
 
+    /* LANG TOGGLE */
+    .lang-toggle {
+      position: absolute;
+      top: 28px;
+      right: 36px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50px;
+      padding: 4px;
+      gap: 2px;
+    }
+    .lang-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+      background: transparent;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .lang-btn.active {
+      background: var(--terracotta);
+      color: white;
+    }
+
     /* DOTS */
     .dots {
       position: absolute;
@@ -152,14 +185,19 @@
     <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1800&q=80')"></div>
     <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=1800&q=80')"></div>
 
-    <span class="address">Ciudad de México &nbsp;·&nbsp; [Colonia, CP]</span>
+    <span class="address" data-es="Ciudad de México &nbsp;·&nbsp; [Colonia, CP]" data-en="Mexico City &nbsp;·&nbsp; [Neighborhood, ZIP]">Ciudad de México &nbsp;·&nbsp; [Colonia, CP]</span>
+
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ESP</button>
+      <button class="lang-btn" onclick="setLang('en')">ENG</button>
+    </div>
 
     <h1 class="brand-name">Rolly Roast</h1>
 
     <nav class="side-nav">
-      <a href="menu.html">Menú</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="menu.html" data-es="Menú" data-en="Menu">Menú</a>
+      <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
+      <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
     </nav>
 
     <span class="est-tag">Est. 2025</span>
@@ -185,6 +223,15 @@
       slides[current].classList.add('active');
       dots[current].classList.add('active');
     }, 4000);
+
+    function setLang(lang) {
+      document.querySelectorAll('[data-es]').forEach(el => {
+        el.innerHTML = el.dataset[lang];
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase().startsWith(lang));
+      });
+    }
   </script>
 </body>
 </html>
